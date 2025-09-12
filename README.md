@@ -137,19 +137,6 @@ This project uses the [ExchangeRate-API](https://exchangerate-api.com/) for real
 - **Smooth Transitions**: Animated theme switching
 - **System Preference**: Respects user's OS theme preference
 
-## 🚀 Deployment
-
-### Netlify
-1. Connect your GitHub repository to Netlify
-2. Set build command: `npm run build`
-3. Set publish directory: `build`
-4. Add environment variables in Netlify dashboard
-
-### Vercel
-1. Import project from GitHub
-2. Configure build settings automatically detected
-3. Add environment variables in project settings
-
 ## 🤝 Contributing
 
 1. **Fork the repository**
