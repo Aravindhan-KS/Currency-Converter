@@ -1,70 +1,179 @@
-# Getting Started with Create React App
+# 💱 Currency Converter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive currency converter built with React that provides real-time exchange rates for multiple currencies.
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-18+-61DAFB?style=flat-square&logo=react&logoColor=white)
+![Styled Components](https://img.shields.io/badge/Styled--Components-DB7093?style=flat-square&logo=styled-components&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+- **Real-time Exchange Rates**: Live currency conversion using ExchangeRate-API
+- **10+ Popular Currencies**: Support for USD, EUR, GBP, JPY, INR, CAD, AUD, CHF, CNY, SEK
+- **Modern UI**: Clean, responsive design with glass morphism effects
+- **Dark/Light Theme**: Toggle between themes with smooth transitions
+- **Swap Functionality**: Quickly swap source and target currencies
+- **Input Validation**: Smart handling of user input with proper formatting
+- **Mobile Responsive**: Optimized for all device sizes
+- **Context Management**: Efficient state management using React Context
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Quick Start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+- Free API key from [ExchangeRate-API](https://app.exchangerate-api.com/sign-up)
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Aravindhan-KS/Currency-Converter.git
+   cd Currency-Converter
+   ```
 
-### `npm run build`
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Set up API key**
+   - Follow the instructions in [API_SETUP.md](./API_SETUP.md) to get your free API key
+   - Create a `.env` file in the root directory
+   - Add your API key:
+     ```
+     REACT_APP_EXCHANGE_API_KEY=your_api_key_here
+     ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. **Open your browser**
+   - Navigate to [http://localhost:3000](http://localhost:3000)
 
-### `npm run eject`
+## 🎯 Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Select Source Currency**: Choose the currency you want to convert from
+2. **Enter Amount**: Type the amount you wish to convert
+3. **Select Target Currency**: Choose the currency to convert to
+4. **View Results**: The converted amount appears instantly
+5. **Swap Currencies**: Use the swap button to quickly reverse the conversion
+6. **Toggle Theme**: Switch between light and dark modes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠️ Available Scripts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Development
+```bash
+npm start          # Start development server
+npm test           # Run test suite
+npm run build      # Build for production
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Production Build
+```bash
+npm run build      # Creates optimized production build
+npm run preview    # Preview production build locally
+```
 
-## Learn More
+## 📁 Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+src/
+├── components/
+│   ├── common/           # Reusable UI components
+│   │   ├── Button.js
+│   │   ├── CurrencySelect.js
+│   │   ├── Header.js
+│   │   ├── Footer.js
+│   │   └── Input.js
+│   └── converter/
+│       └── CurrencyConverter.js  # Main converter component
+├── context/
+│   ├── CurrencyContext.js        # Currency state management
+│   └── ThemeContext.js           # Theme state management
+├── services/
+│   └── api.js                    # API service layer
+├── styles/
+│   └── GlobalStyles.js           # Global styled-components
+├── utils/
+│   └── formatting.js             # Utility functions
+├── App.js                        # Main App component
+└── index.js                      # Entry point
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔧 Technologies Used
 
-### Code Splitting
+- **Frontend Framework**: React 18+
+- **Styling**: Styled Components
+- **HTTP Client**: Axios
+- **State Management**: React Context API
+- **Routing**: React Router DOM
+- **UI Components**: React Select
+- **Testing**: React Testing Library
+- **Build Tool**: Create React App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🌐 API Integration
 
-### Analyzing the Bundle Size
+This project uses the [ExchangeRate-API](https://exchangerate-api.com/) for real-time currency conversion:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **Free Tier**: 1,500 requests/month
+- **Real-time Data**: Live exchange rates
+- **Multiple Currencies**: 160+ currencies supported
+- **Reliable Service**: 99.9% uptime
 
-### Making a Progressive Web App
+## 📱 Responsive Design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Mobile First**: Designed for mobile devices first
+- **Tablet Support**: Optimized for tablet viewing
+- **Desktop Enhanced**: Full desktop experience
+- **Cross-browser**: Compatible with all modern browsers
 
-### Advanced Configuration
+## 🎨 Theme Support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Light Theme**: Clean, bright interface
+- **Dark Theme**: Easy on the eyes for low-light usage
+- **Smooth Transitions**: Animated theme switching
+- **System Preference**: Respects user's OS theme preference
 
-### Deployment
+## 🚀 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Netlify
+1. Connect your GitHub repository to Netlify
+2. Set build command: `npm run build`
+3. Set publish directory: `build`
+4. Add environment variables in Netlify dashboard
 
-### `npm run build` fails to minify
+### Vercel
+1. Import project from GitHub
+2. Configure build settings automatically detected
+3. Add environment variables in project settings
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🤝 Contributing
+
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
+3. **Commit your changes**: `git commit -m 'Add amazing feature'`
+4. **Push to the branch**: `git push origin feature/amazing-feature`
+5. **Open a Pull Request**
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**Aravindhan KS**
+- GitHub: [@Aravindhan-KS](https://github.com/Aravindhan-KS)
+
+## 🙏 Acknowledgments
+
+- [ExchangeRate-API](https://exchangerate-api.com/) for providing free currency data
+- [React](https://reactjs.org/) team for the amazing framework
+- [Styled Components](https://styled-components.com/) for the styling solution
+- All contributors and users of this project
+
+---
+
+⭐ **Star this repository if you find it helpful!**
