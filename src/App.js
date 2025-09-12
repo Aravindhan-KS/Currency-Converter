@@ -6,6 +6,7 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import CurrencyConverter from './components/converter/CurrencyConverter';
 import GlobalStyles from './styles/GlobalStyles';
+import StyledComponentsProvider from './components/StyledComponentsProvider';
 
 // Enhanced main app container
 const AppContainer = styled.div`
@@ -203,30 +204,32 @@ function App() {
         </div>
       </LoadingOverlay>
       
-      <ThemeProvider>
-        <CurrencyProvider>
-          <AppContainer>
-            <BackgroundDecoration />
-            
-            {/* Lazy load components for better performance */}
-            <LazyComponent delay={100}>
-              <Header />
-            </LazyComponent>
-            
-            <MainContent>
-              <ContentWrapper>
-                <LazyComponent delay={200}>
-                  <CurrencyConverter />
-                </LazyComponent>
-              </ContentWrapper>
-            </MainContent>
-            
-            <LazyComponent delay={300}>
-              <Footer />
-            </LazyComponent>
-          </AppContainer>
-        </CurrencyProvider>
-      </ThemeProvider>
+      <StyledComponentsProvider>
+        <ThemeProvider>
+          <CurrencyProvider>
+            <AppContainer>
+              <BackgroundDecoration />
+              
+              {/* Lazy load components for better performance */}
+              <LazyComponent delay={100}>
+                <Header />
+              </LazyComponent>
+              
+              <MainContent>
+                <ContentWrapper>
+                  <LazyComponent delay={200}>
+                    <CurrencyConverter />
+                  </LazyComponent>
+                </ContentWrapper>
+              </MainContent>
+              
+              <LazyComponent delay={300}>
+                <Footer />
+              </LazyComponent>
+            </AppContainer>
+          </CurrencyProvider>
+        </ThemeProvider>
+      </StyledComponentsProvider>
     </>
   );
 }
