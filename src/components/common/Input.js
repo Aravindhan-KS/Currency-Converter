@@ -1,48 +1,93 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Styled input container
+// Modern input container
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
   width: 100%;
+  position: relative;
 `;
 
-// Styled label
+// Modern label
 const Label = styled.label`
-  font-size: 14px;
-  margin-bottom: 5px;
-  color: #495057;
-  font-weight: 500;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 `;
 
-// Styled input element
+// Enhanced visibility input
 const StyledInput = styled.input`
-  padding: 10px 15px;
-  border: 2px solid ${props => props.error ? '#dc3545' : '#ced4da'};
-  border-radius: 4px;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
+  padding: 0.875rem 1rem;
+  border: 2px solid ${props => props.error ? 'var(--error-color)' : 'var(--gray-300)'};
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--white);
+  color: var(--gray-800);
+  transition: var(--transition);
   width: 100%;
+  min-height: 52px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  &::placeholder {
+    color: var(--gray-500);
+    font-weight: 500;
+  }
   
   &:focus {
     outline: none;
-    border-color: ${props => props.error ? '#dc3545' : '#2c3e50'};
-    box-shadow: 0 0 0 2px ${props => props.error ? 'rgba(220, 53, 69, 0.25)' : 'rgba(44, 62, 80, 0.25)'};
+    border-color: ${props => props.error ? 'var(--error-color)' : 'var(--primary-color)'};
+    box-shadow: 0 0 0 3px ${props => 
+      props.error 
+        ? 'rgba(239, 68, 68, 0.15)' 
+        : 'rgba(102, 126, 234, 0.15)'
+    }, 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+  }
+  
+  &:hover:not(:focus) {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   &:disabled {
-    background-color: #e9ecef;
+    background-color: var(--gray-100);
+    border-color: var(--gray-200);
+    color: var(--gray-400);
     cursor: not-allowed;
+  }
+  
+  /* Number input styling */
+  &[type="number"] {
+    font-family: 'Inter', monospace;
+    text-align: right;
+    font-size: 1.1rem;
+    font-weight: 700;
+    
+    @media (max-width: 480px) {
+      text-align: left;
+    }
   }
 `;
 
-// Error message styling
+// Modern error message
 const ErrorMessage = styled.span`
-  color: #dc3545;
-  font-size: 12px;
-  margin-top: 5px;
+  color: var(--error-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  
+  &::before {
+    content: '⚠';
+    font-size: 0.875rem;
+  }
 `;
 
 // Input component
