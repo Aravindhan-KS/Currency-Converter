@@ -16,12 +16,20 @@ export const CurrencyProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [rates, setRates] = useState({});
 
-  // Fetch supported currencies on mount
+  // Fetch supported currencies on mount (non-blocking)
   useEffect(() => {
     const fetchCurrencies = async () => {
       try {
+        console.log('CurrencyContext: Fetching supported currencies...');
         setIsLoading(true);
-        const data = await currencyAPI.getSupportedCurrencies();
+        
+        // Set a timeout to prevent hanging
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Request timeout')), 5000)
+        );
+        
+        const dataPromise = currencyAPI.getSupportedCurrencies();
+        const data = await Promise.race([dataPromise, timeoutPromise]);
         
         if (data?.supported_codes) {
           // Format currencies for dropdown
@@ -30,32 +38,56 @@ export const CurrencyProvider = ({ children }) => {
             label: `${code} - ${name}`,
           }));
           setCurrencies(formattedCurrencies);
+          console.log('CurrencyContext: Successfully loaded currencies');
         }
       } catch (err) {
-        setError('Failed to load currencies. Please try again later.');
-        console.error('Error fetching currencies:', err);
+        console.error('CurrencyContext: Error fetching currencies:', err);
+        setError('Failed to load currencies. Using fallback data.');
+        
+        // Fallback currency list
+        const fallbackCurrencies = [
+          { value: 'USD', label: 'USD - US Dollar' },
+          { value: 'EUR', label: 'EUR - Euro' },
+          { value: 'GBP', label: 'GBP - British Pound' },
+          { value: 'JPY', label: 'JPY - Japanese Yen' },
+          { value: 'INR', label: 'INR - Indian Rupee' },
+          { value: 'CAD', label: 'CAD - Canadian Dollar' },
+          { value: 'AUD', label: 'AUD - Australian Dollar' },
+        ];
+        setCurrencies(fallbackCurrencies);
       } finally {
         setIsLoading(false);
       }
     };
 
+    // Don't block the app - fetch currencies asynchronously
     fetchCurrencies();
   }, []);
 
-  // Fetch exchange rates when base currency changes
+  // Fetch exchange rates when base currency changes (non-blocking)
   useEffect(() => {
     const fetchRates = async () => {
       if (!baseCurrency) return;
       
       try {
+        console.log('CurrencyContext: Fetching rates for', baseCurrency);
         setIsLoading(true);
-        const data = await currencyAPI.getLatestRates(baseCurrency);
+        
+        // Set a timeout to prevent hanging
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Request timeout')), 5000)
+        );
+        
+        const dataPromise = currencyAPI.getLatestRates(baseCurrency);
+        const data = await Promise.race([dataPromise, timeoutPromise]);
+        
         if (data?.rates) {
           setRates(data.rates);
+          console.log('CurrencyContext: Successfully loaded rates');
         }
       } catch (err) {
+        console.error('CurrencyContext: Error fetching rates:', err);
         setError('Failed to load exchange rates. Please try again later.');
-        console.error('Error fetching rates:', err);
       } finally {
         setIsLoading(false);
       }

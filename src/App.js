@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { CurrencyProvider } from './context/CurrencyContext';
+import { SimpleCurrencyProvider } from './context/SimpleCurrencyContext';
 import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import CurrencyConverter from './components/converter/CurrencyConverter';
 import GlobalStyles from './styles/GlobalStyles';
+
+// Use simple provider for debugging
+const ProviderToUse = process.env.NODE_ENV === 'production' ? SimpleCurrencyProvider : CurrencyProvider;
 
 // Enhanced main app container
 const AppContainer = styled.div`
@@ -179,11 +183,11 @@ function App() {
   // Initialize app
   useEffect(() => {
     console.log('App useEffect: Starting initialization...');
-    // Reduce loading time for debugging
+    // Very short loading time for debugging
     const timer = setTimeout(() => {
       console.log('App useEffect: Initialization complete, hiding loading...');
       setIsLoading(false);
-    }, 500); // Reduced from 1500ms to 500ms for debugging
+    }, 100); // Reduced to 100ms for debugging
     
     return () => {
       console.log('App useEffect: Cleanup');
@@ -212,7 +216,7 @@ function App() {
       </LoadingOverlay>
       
       <ThemeProvider>
-        <CurrencyProvider>
+        <ProviderToUse>
           <AppContainer>
             <BackgroundDecoration />
             
@@ -233,7 +237,7 @@ function App() {
               <Footer />
             </LazyComponent>
           </AppContainer>
-        </CurrencyProvider>
+        </ProviderToUse>
       </ThemeProvider>
     </>
   );
