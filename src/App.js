@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { SimpleCurrencyProvider } from './context/SimpleCurrencyContext';
+import { CurrencyProvider } from './context/CurrencyContext';
 import { ThemeProvider } from './context/ThemeContext';
-import SimpleCurrencyConverter from './components/converter/SimpleCurrencyConverter';
+import RealCurrencyConverter from './components/converter/RealCurrencyConverter';
 import './App.css';
 
 // Simple app without styled-components
@@ -51,26 +51,26 @@ function App() {
             Initializing Currency Converter
             <br />
             <small style={{ opacity: 0.7, fontSize: '0.875rem' }}>
-              Loading real-time exchange rates...
+              Connecting to real-time exchange rates API...
             </small>
           </div>
         </div>
       </div>
       
       <ThemeProvider>
-        <SimpleCurrencyProvider>
+        <CurrencyProvider>
           <div className="app-container">
             <div className="background-decoration"></div>
             
             <main className="main-content">
               <div className="content-wrapper">
                 <LazyComponent delay={200}>
-                  <SimpleCurrencyConverter />
+                  <RealCurrencyConverter />
                 </LazyComponent>
               </div>
             </main>
           </div>
-        </SimpleCurrencyProvider>
+        </CurrencyProvider>
       </ThemeProvider>
     </>
   );
