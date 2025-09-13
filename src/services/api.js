@@ -4,9 +4,15 @@ import axios from 'axios';
 const BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://v6.exchangerate-api.com/v6';
 const API_KEY = process.env.REACT_APP_EXCHANGE_RATE_API_KEY;
 
+// Check if API key is available
+if (!API_KEY) {
+  console.warn('API key not found. Some features may not work.');
+}
+
 // Create axios instance
 const apiClient = axios.create({
   baseURL: BASE_URL,
+  timeout: 10000, // 10 second timeout
   headers: {
     'Content-Type': 'application/json',
   },
@@ -20,9 +26,11 @@ apiClient.interceptors.response.use(
     const errorMessage = 
       error.response?.data?.['error-type'] || 
       error.response?.data?.error || 
+      error.code === 'ENOTFOUND' ? 'Network connection error' :
+      error.code === 'TIMEOUT' ? 'Request timeout' :
       'An error occurred while fetching data';
-    console.error('API Error:', errorMessage);
-    return Promise.reject(error);
+    console.error('API Error:', errorMessage, error);
+    return Promise.reject(new Error(errorMessage));
   }
 );
 

@@ -6,12 +6,9 @@
     [
       "babel-plugin-styled-components",
       {
-        "ssr": true,
+        "ssr": false,
         "displayName": true,
-        "preprocess": false,
-        "minify": true,
-        "transpileTemplateLiterals": true,
-        "pure": true
+        "preprocess": false
       }
     ]
   ],
@@ -21,12 +18,12 @@
         [
           "babel-plugin-styled-components",
           {
-            "ssr": true,
+            "ssr": false,
             "displayName": false,
             "preprocess": false,
             "minify": true,
-            "transpileTemplateLiterals": true,
-            "pure": true
+            "transpileTemplateLiterals": false,
+            "pure": false
           }
         ]
       ]

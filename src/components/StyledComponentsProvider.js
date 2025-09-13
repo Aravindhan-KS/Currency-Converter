@@ -4,29 +4,20 @@ import { StyleSheetManager } from 'styled-components';
 
 // Styled-components SSR and production helper
 const StyledComponentsProvider = ({ children }) => {
-  // For production builds, always use StyleSheetManager
+  // For production builds, don't use StyleSheetManager as it causes issues
   const isProd = process.env.NODE_ENV === 'production';
   
   if (isProd) {
-    return (
-      <StyleSheetManager 
-        shouldForwardProp={(prop, defaultValidatorFn) => {
-          // Allow all props to be forwarded in production
-          return defaultValidatorFn ? defaultValidatorFn(prop) : true;
-        }}
-        enableVendorPrefixes
-      >
-        {children}
-      </StyleSheetManager>
-    );
+    // In production, just return children without StyleSheetManager
+    return <>{children}</>;
   }
 
-  // Development or client-side rendering
+  // Development - check if we're in browser environment
   if (typeof window !== 'undefined') {
     return <>{children}</>;
   }
 
-  // Server-side rendering configuration for development
+  // Server-side rendering configuration for development only
   return (
     <StyleSheetManager shouldForwardProp={() => true}>
       {children}

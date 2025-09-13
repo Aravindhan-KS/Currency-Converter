@@ -6,7 +6,6 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import CurrencyConverter from './components/converter/CurrencyConverter';
 import GlobalStyles from './styles/GlobalStyles';
-import StyledComponentsProvider from './components/StyledComponentsProvider';
 
 // Enhanced main app container
 const AppContainer = styled.div`
@@ -17,7 +16,7 @@ const AppContainer = styled.div`
   overflow-x: hidden;
   
   /* Smooth theme transitions */
-  transition: all var(--transition-slow);
+  transition: all 350ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 // Enhanced background with multiple layers
@@ -28,7 +27,7 @@ const BackgroundDecoration = styled.div`
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: var(--primary-gradient);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   
   /* Primary animated background layer */
   &::before {
@@ -84,18 +83,18 @@ const MainContent = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-8) var(--space-4);
+  padding: 2rem 1rem;
   min-height: calc(100vh - 200px); /* Account for header and footer */
   position: relative;
   z-index: 1;
   
   @media (max-width: 768px) {
-    padding: var(--space-6) var(--space-2);
+    padding: 1.5rem 0.5rem;
     min-height: calc(100vh - 180px);
   }
   
   @media (max-width: 480px) {
-    padding: var(--space-4) var(--space-2);
+    padding: 1rem 0.5rem;
     min-height: calc(100vh - 160px);
   }
 `;
@@ -129,22 +128,22 @@ const LoadingOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--primary-gradient);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   opacity: ${props => props.isVisible ? 1 : 0};
   visibility: ${props => props.isVisible ? 'visible' : 'hidden'};
-  transition: all var(--transition-slow);
+  transition: all 350ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 const LoadingSpinner = styled.div`
   width: 60px;
   height: 60px;
   border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top: 4px solid var(--white);
-  border-radius: var(--radius-full);
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
   animation: spin 1s linear infinite;
   
   @keyframes spin {
@@ -154,10 +153,10 @@ const LoadingSpinner = styled.div`
 `;
 
 const LoadingText = styled.div`
-  color: var(--white);
-  font-size: var(--text-lg);
+  color: #ffffff;
+  font-size: 1.125rem;
   font-weight: 600;
-  margin-top: var(--space-4);
+  margin-top: 1rem;
   text-align: center;
 `;
 
@@ -174,17 +173,25 @@ const LazyComponent = ({ children, delay = 0 }) => {
 };
 
 function App() {
+  console.log('App component rendering...');
   const [isLoading, setIsLoading] = useState(true);
   
   // Initialize app
   useEffect(() => {
-    // Simulate initial loading time for better UX
+    console.log('App useEffect: Starting initialization...');
+    // Reduce loading time for debugging
     const timer = setTimeout(() => {
+      console.log('App useEffect: Initialization complete, hiding loading...');
       setIsLoading(false);
-    }, 1500);
+    }, 500); // Reduced from 1500ms to 500ms for debugging
     
-    return () => clearTimeout(timer);
+    return () => {
+      console.log('App useEffect: Cleanup');
+      clearTimeout(timer);
+    };
   }, []);
+
+  console.log('App render: isLoading =', isLoading);
 
   return (
     <>
@@ -204,32 +211,30 @@ function App() {
         </div>
       </LoadingOverlay>
       
-      <StyledComponentsProvider>
-        <ThemeProvider>
-          <CurrencyProvider>
-            <AppContainer>
-              <BackgroundDecoration />
-              
-              {/* Lazy load components for better performance */}
-              <LazyComponent delay={100}>
-                <Header />
-              </LazyComponent>
-              
-              <MainContent>
-                <ContentWrapper>
-                  <LazyComponent delay={200}>
-                    <CurrencyConverter />
-                  </LazyComponent>
-                </ContentWrapper>
-              </MainContent>
-              
-              <LazyComponent delay={300}>
-                <Footer />
-              </LazyComponent>
-            </AppContainer>
-          </CurrencyProvider>
-        </ThemeProvider>
-      </StyledComponentsProvider>
+      <ThemeProvider>
+        <CurrencyProvider>
+          <AppContainer>
+            <BackgroundDecoration />
+            
+            {/* Lazy load components for better performance */}
+            <LazyComponent delay={100}>
+              <Header />
+            </LazyComponent>
+            
+            <MainContent>
+              <ContentWrapper>
+                <LazyComponent delay={200}>
+                  <CurrencyConverter />
+                </LazyComponent>
+              </ContentWrapper>
+            </MainContent>
+            
+            <LazyComponent delay={300}>
+              <Footer />
+            </LazyComponent>
+          </AppContainer>
+        </CurrencyProvider>
+      </ThemeProvider>
     </>
   );
 }
