@@ -136,22 +136,23 @@
 }
 
 .result-section {
-  margin-top: 2rem;
-  padding: 1.5rem;
+  margin-top: 0;
+  padding: 1rem;
   background: #f8fafc;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
+  flex: 2;
 }
 
 .result-label {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #64748b;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .result-amount {
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #1e293b;
   margin: 0;

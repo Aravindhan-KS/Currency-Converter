@@ -98,12 +98,12 @@ const RealCurrencyConverter = () => {
         <label className="input-label">To</label>
         <div className="input-row">
           <div className="result-section">
-            <div className="result-label">Converted Amount</div>
+            <div className="result-label">Amount</div>
             <div className="result-amount">
               {isLoading ? (
                 <span>
                   <span className="loading-spinner"></span>
-                  Converting...
+                  Loading...
                 </span>
               ) : (
                 convertedAmount || '0.00'
