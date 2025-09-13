@@ -77,6 +77,7 @@
   font-size: 1.125rem;
   font-weight: 600;
   background: rgba(248, 250, 252, 0.8);
+  color: #1f2937;
   transition: all 0.2s ease;
 }
 
@@ -84,6 +85,11 @@
   outline: none;
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.amount-input::placeholder {
+  color: #9ca3af;
+  opacity: 1;
 }
 
 .converted-amount {
@@ -104,6 +110,7 @@
   font-size: 1rem;
   font-weight: 500;
   background: rgba(248, 250, 252, 0.8);
+  color: #1f2937;
   transition: all 0.2s ease;
   cursor: pointer;
 }
@@ -205,6 +212,25 @@
   color: #9ca3af;
   margin: 0;
   font-style: italic;
+}
+
+/* Additional input styling for better contrast */
+.amount-input,
+.currency-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.amount-input::-webkit-input-placeholder,
+.currency-select::-webkit-input-placeholder {
+  color: #9ca3af;
+}
+
+.amount-input::-moz-placeholder,
+.currency-select::-moz-placeholder {
+  color: #9ca3af;
+  opacity: 1;
 }
 
 /* Responsive Design */
