@@ -5,6 +5,8 @@ import App from './App';
 import ErrorBoundary from './components/ErrorBoundary';
 import reportWebVitals from './reportWebVitals';
 
+// Using App.js (which is now the simple version without styled-components)
+
 // Debug logging
 console.log('React index.js loading...');
 console.log('Environment:', process.env.NODE_ENV);
