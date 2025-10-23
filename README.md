@@ -1,4 +1,4 @@
-# 💱 Currency Converter
+# Currency Converter
 
 A modern, responsive currency converter built with React that provides real-time exchange rates for multiple currencies.
 
@@ -62,7 +62,7 @@ A modern, responsive currency converter built with React that provides real-time
 5. **Swap Currencies**: Use the swap button to quickly reverse the conversion
 6. **Toggle Theme**: Switch between light and dark modes
 
-## 🛠️ Available Scripts
+## Available Scripts
 
 ### Development
 ```bash
