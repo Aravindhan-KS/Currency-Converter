@@ -6,7 +6,7 @@ A modern, responsive currency converter built with React that provides real-time
 ![Styled Components](https://img.shields.io/badge/Styled--Components-DB7093?style=flat-square&logo=styled-components&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
-## ✨ Features
+## Features
 
 - **Real-time Exchange Rates**: Live currency conversion using ExchangeRate-API
 - **10+ Popular Currencies**: Support for USD, EUR, GBP, JPY, INR, CAD, AUD, CHF, CNY, SEK
@@ -17,7 +17,7 @@ A modern, responsive currency converter built with React that provides real-time
 - **Mobile Responsive**: Optimized for all device sizes
 - **Context Management**: Efficient state management using React Context
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Node.js (v14 or higher)
@@ -53,7 +53,7 @@ A modern, responsive currency converter built with React that provides real-time
 5. **Open your browser**
    - Navigate to [http://localhost:3000](http://localhost:3000)
 
-## 🎯 Usage
+## Usage
 
 1. **Select Source Currency**: Choose the currency you want to convert from
 2. **Enter Amount**: Type the amount you wish to convert
@@ -77,7 +77,7 @@ npm run build      # Creates optimized production build
 npm run preview    # Preview production build locally
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -103,7 +103,7 @@ src/
 └── index.js                      # Entry point
 ```
 
-## 🔧 Technologies Used
+## Technologies Used
 
 - **Frontend Framework**: React 18+
 - **Styling**: Styled Components
@@ -114,7 +114,7 @@ src/
 - **Testing**: React Testing Library
 - **Build Tool**: Create React App
 
-## 🌐 API Integration
+## API Integration
 
 This project uses the [ExchangeRate-API](https://exchangerate-api.com/) for real-time currency conversion:
 
@@ -130,14 +130,14 @@ This project uses the [ExchangeRate-API](https://exchangerate-api.com/) for real
 - **Desktop Enhanced**: Full desktop experience
 - **Cross-browser**: Compatible with all modern browsers
 
-## 🎨 Theme Support
+## Theme Support
 
 - **Light Theme**: Clean, bright interface
 - **Dark Theme**: Easy on the eyes for low-light usage
 - **Smooth Transitions**: Animated theme switching
 - **System Preference**: Respects user's OS theme preference
 
-## 🤝 Contributing
+## Contributing
 
 1. **Fork the repository**
 2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
@@ -145,16 +145,11 @@ This project uses the [ExchangeRate-API](https://exchangerate-api.com/) for real
 4. **Push to the branch**: `git push origin feature/amazing-feature`
 5. **Open a Pull Request**
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
-
-**Aravindhan KS**
-- GitHub: [@Aravindhan-KS](https://github.com/Aravindhan-KS)
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [ExchangeRate-API](https://exchangerate-api.com/) for providing free currency data
 - [React](https://reactjs.org/) team for the amazing framework
@@ -163,4 +158,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-⭐ **Star this repository if you find it helpful!**
+**Star this repository if you find it helpful!**
